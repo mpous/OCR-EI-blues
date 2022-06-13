@@ -3,6 +3,10 @@
 
 This project is using an OCR ML model from Edge Impulse to read digits (from 0-9) through a camera. Once the digit is detected is going to be send a message using Blues Wireless.
 
+![Testing OCR Reader](https://user-images.githubusercontent.com/173156/173465671-19ae4bc4-56ad-43c7-ae03-102ab2c73fec.png)
+
+I'm using the model published on Edge Impulse [here](https://studio.edgeimpulse.com/public/18079/latest)
+
 
 ### Hardware 
 
@@ -28,4 +32,14 @@ $ cd OCR-EI-blues
 $ balena login
 $ balena push OCR-EI-blues 
 ```
+
+### How it works?
+
+1. Create your Blues Wireless account on the [notehub.io](https://notehub.io)
+2. Get your projectID and fileID
+3. Clone the Edge Impulse OCR project on your Edge Impulse account from [here](https://studio.edgeimpulse.com/public/18079/latest)
+4. Get your API key from Edge Impulse
+5. Deploy with balena the project as explained above
+6. Paste the variables `productID`, `fileID`, `EI_API_KEY` and the project might work.
+
 
