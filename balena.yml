@@ -1,126 +1,25 @@
-name: "Bird Watcher"
+name: "OCR Reader"
 type: "sw.application"
-description: "Make a bird watcher with a Pi4 and a camera and start classifying the birds around you. It runs Edge Impulse, Telegram and balena."
+description: "Make an OCR Reader with a Pi4 and a camera and start classifying the digits around you. It runs Edge Impulse, Blues Wireless and balena."
 post-provisioning: >-
-  ## What is Bird Watcher?
-  
-    Bird Watcher is a Bird Feeder with a Raspberry Pi 4 with a camera running balena and Edge Impulse Machine Learning service. This project run Edge Impulse Linux SDK on balenaOS allowing you to manage a fleet of devices.
-  
-  ## Installation Instructions
-  
-  ### Hardware and software needed
-  
-  * Raspberry Pi 4 Model B
-  
-  * Raspberry Pi Camera or USB Camera
-  
-  * [Edge Impulse account](https://edgeimpulse.com/)
-  
-  * [balenaEtcher](https://balena.io/etcher/)
-  
-  
-  ### Get Started
-  
-    Running this project is as simple as click 'Get started` button on this page. Clicking will open a pop-up, introduce the WiFi credentials and generate the balenaOS Operating System image. 
-
-    Once the OS image is downloaded on your computer, open [balenaEtcher](https://balena.io/etcher/). Flash an SD card with the OS image downloaded.
-
-    When the flashing process has completed successfully, insert your SD card into the Raspberry Pi 4 and connect the power supply.
-
-    After your device is flashed and powered up, simply open up a web browser on your computer on the same network. Enter the address: [http://birdwatcher.local](http://birdwatcher.local).
-    
-    To login, use the username `birdwatcher` and password `birdwatcher`. You may change these credentials on `Settings`.
-
-  
-  ### Configure the Variables
-  
-  #### Use your own Edge Impulse ML model
-  
-  The project will start automatically working with Mithun's original Bird Watcher ML model. However if you would like to re-train your model and improve it, feel free to follow these instructions below:
-  
-  
-  * Go to [Bird Watcher ML model](https://studio.edgeimpulse.com/public/40986/latest) and clone it on your [Edge Impulse](https://studio.edgeimpulse.com) account.
-  
-  * Go to `Keys` next to `Project Info` menu. 
-  
-  * Create a new Edge Impulse API Key and copy it.
-  
-  * Go to [http://birdwatcher.local](http://birdwatcher.local)
-  
-  * Go to `Settings` and introduce the Edge Impulse API key.
-  
-  * Now you can start training your Edge Impulse ML model.
-  
-
-  Otherwise feel free to create your own Edge Impulse ML model with other topics. Feel free to share innovations you do on the top of this project.
-
-  
-  #### Create a Telegram bot and a Channel to share your watched birds
-  
-  Follow this instructions to create a Telegram bot.
-  
-  * Download the Telegram application on your mobile phone.
-  
-  * Search the user `BotFather`. This is the official Telegram bot to create bots.
-  
-  * Click `Menu` and select `Create a new bot` or alternatively write `/newbot` on the chat.
-  
-  * Introduce a name for your bot and then introduce a username (using underscores and `_bot` ending). 
-  
-  * Copy the URL of your bot and the `HTTP API token` which will be the `TG_TOKEN` on the Telegram Variables on Settings.
-  
-  * Go to Telegram app and create a private Channel and introduce as a subscriber the bot that you have created.
-  
-  * Open a browser and type `https://api.telegram.org/bot<TG_TOKEN>/getUpdates` (change `TG_TOKEN` by the real one).
-  
-  * Copy the chat id from the bot and introduce it as a `TG_GHAT_ID` on the Settings.
-
-  
-  ### Invite your community
-  
-    Once you have a Telegram bot URL, feel free to share it with the share it with the community. 
-    
-    Create a local community with schools and others who would like to learn about birds and nature around them. Involve families, teachers and more.
-  
-  ### Troubleshooting
-  
-  If you have any issue feel free to write on [https://forums.balena.io](https://forums.balena.io).
-  
-  
-  #### Local website does not work
-  
-    If you have more than one device, the device names will increment like so: [http://birdwatcher-2.local](http://birdwatcher-2.local), [http://birdwatcher-3.local](http://birdwatcher-3.local)
-
-    The local hostname requires a multicast DNS (mDNS) service like Bonjour or Avahi:
-
-    * On Windows, check if 'Bonjour' is installed (Control Panel > Programs and Features). If not, you can download Bonjour for Windows from [https://support.apple.com/kb/DL999](https://support.apple.com/kb/DL999)
-    * Most 'desktop' Linux distributions ship with Avahi. Search for the installation command for your distribution. E.g. for Ubuntu: sudo apt-get install avahi-daemon
-    macOS comes with Bonjour built-in.
-  
-  ## Contributions are open
-  
-  Feel free to contribute into the repo [here](https://github.com/just4give/birdwatcher).
+  Read instructions [here](https://github.com/mpous/OCR-EI-blues/blob/master/README.md)
   
 assets:
   repository:
     type: "blob.asset"
     data:
-      url: "https://github.com/just4give/birdwatcher"
+      url: "https://github.com/mpous/OCR-EI-blues"
   logo:
     type: "blob.asset"
     data:
-      url: "https://raw.githubusercontent.com/just4give/birdwatcher/master/logo.png"
+      url: "https://github.com/mpous/OCR-EI-blues/blob/master/web/app/assets/logo-ocr.png"
 data:
     applicationEnvironmentVariables:
-      - EI_COLLECT_MODE_IMAGE: N
-      - EI_API_KEY_IMAGE: ei_153fa3c6fe14b17b9bd0c03c0c4cc36dfcbb4ddc2404c816
-      - TG_CHAT_ID: put_your_telegram_chatbot_id
-      - TG_KEY: put_your_telegram_key
-      - ENABLE_TG: N
+      - EI_API_KEY_IMAGE: ei_f9b1cce338e2d8b2309eae53e94a084b4440dc9048afa86f
       - ENABLE_MOTION: Y
       - PIXEL_THRESHOLD: 75000
-      - USERNAME: birdwatcher
-      - PASSWORD: birdwatcher
+      - USERNAME: ocr
+      - PASSWORD: ocr
       - LATITUDE: 0
       - LONGITUDE: 0
       
