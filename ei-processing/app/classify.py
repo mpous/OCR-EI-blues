@@ -30,6 +30,26 @@ status_list=[None,None]
 sysusername = os.environ['USERNAME']
 syspassword = os.environ['PASSWORD']
 
+########
+# Turning on Blues Wireless
+
+prodID = os.environ['productID']
+fileID = os.environ['fileID']
+
+req = {"req": "hub.set"}
+req["product"] = prodID
+req["mode"] = "continuous"
+
+#url = "http://notecard:8888"
+url = "http://localhost:3434"
+headers = {"Content-Type": "application/json"}
+print(url)
+print(req)
+result = requests.post(url, json=req, headers=headers)
+print(result.text)
+
+######
+
 EI_API_KEY_IMAGE = os.environ['EI_API_KEY_IMAGE']
 ENABLE_MOTION = False
 ENABLE_TG = False
@@ -409,10 +429,28 @@ def main():
 
                 if "classification" in res["result"].keys():
                     print('Result (%d ms.) ' % (res['timing']['dsp'] + res['timing']['classification']), end='')
+                    max_label = ""
+                    max_score = 0
+                    score = 0
                     for label in labels:
                         score = res['result']['classification'][label]
                         print('%s: %.2f\t' % (label, score), end='')
+                        score = round(score)*100
+                        if score > 80:
+                            max_label = label
+                            max_score = score
                     print('', flush=True)
+
+                    if max_score > 0:
+                        print(max_label)
+
+                        req = {"req": "note.add"}
+                        req["file"] = fileID
+                        req["sync"] = True
+                        req["body"] = {"label": max_label, "score": max_score}
+                        result = requests.post(url, json=req, headers=headers)
+                        print(result.text)
+
 
                 elif "bounding_boxes" in res["result"].keys():
                     print('Found %d bounding boxes (%d ms.)' % (len(res["result"]["bounding_boxes"]), res['timing']['dsp'] + res['timing']['classification']))

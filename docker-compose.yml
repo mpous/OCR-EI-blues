@@ -1,6 +1,15 @@
 version: '2.1'
 services: 
         
+        notecard:
+                image: "bh.cr/blues_wireless/notecard-aarch64"
+                network_mode: host
+                devices:
+                - "/dev/i2c-1:/dev/i2c-1"
+                expose:
+                - "3434"
+                privileged: true
+
         tools:
                 build: ./tools
                 privileged: true
