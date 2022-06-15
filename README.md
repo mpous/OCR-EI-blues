@@ -12,11 +12,14 @@ I'm using the model published on Edge Impulse [here](https://studio.edgeimpulse.
 
 * Raspberry Pi 4
 * [Raspberry Pi camera](https://www.raspberrypi.org/products/camera-module-v2/) or any USB camera.
+* [Notecarrier Pi Hat](https://shop.blues.io/products/carr-pi)
+* [Notecard](https://shop.blues.io/products/note-nbgl-500)
 
 ### Software 
 
 * Sign up for a free [Edge Impulse account](https://edgeimpulse.com/)
 * Sign up for a free [BalenaCloud account](https://www.balena.io/)
+* Sign up for the [Notehub account](https://notehub.io)
 * [balenaEtcher](https://www.balena.io/etcher/)
 
 ### Deploy using balenaCloud
@@ -36,10 +39,26 @@ $ balena push OCR-EI-blues
 ### How it works?
 
 1. Create your Blues Wireless account on the [notehub.io](https://notehub.io)
-2. Get your projectID and fileID
+
+<img width="1884" alt="Notehub" src="https://user-images.githubusercontent.com/173156/173960131-a72b1bae-38ff-4bbc-a117-c8f678391fd1.png">
+
+2. Create a new Project on Notehub and get your `projectID` and `fileID`:
+
+![Create a blues project](https://user-images.githubusercontent.com/173156/173959908-b274bfb5-2952-4a00-82ce-5b0e42e90e84.png)
+
+![Project created at notehub](https://user-images.githubusercontent.com/173156/173960368-eedc9e5a-2a9f-44db-a311-97ab13e19975.png)
+
+Remember to copy the `projectID`.
+
 3. Clone the Edge Impulse OCR project on your Edge Impulse account from [here](https://studio.edgeimpulse.com/public/18079/latest)
+
+
+
 4. Get your API key from Edge Impulse
-5. Deploy with balena the project as explained above
-6. Paste the variables `productID`, `fileID`, `EI_API_KEY` and the project might work.
+
+
+6. Deploy with balena the project as explained above
+
+7. Paste the variables `ENABLE_BLUES_WIRELESS` to `Y`, then `productID`, `fileID`, `EI_API_KEY` and the project might work.
 
 
