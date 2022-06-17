@@ -93,6 +93,47 @@ Press the button `Clone this repo` and then host it on your Edge Impulse account
 
 ![Create Routes](https://user-images.githubusercontent.com/173156/174343879-a0a98d70-73e6-4a90-a945-4849d924ec56.png)
 
+14. Create an account at [Datacake](https://datacake.co/) and go to `Add Device`. Clicking that the device is a `Generic API device`.
 
+![Add a device at Datacake](https://user-images.githubusercontent.com/173156/174344231-ace51cd6-f136-4726-ac23-dd290f4f75fd.png)
 
+Finally select that the device is a `New Product from template` and select the **Blues Wireless template**
 
+![Add a Blues Wireless device from a template on Datacake](https://user-images.githubusercontent.com/173156/174344604-42e32bd2-ddef-4af1-ab0e-b7f4fb30ce49.png)
+
+You will need the `DeviceUUID` from the notehub.
+
+15. Go to `Configuration` to define the data that Datacake is going to receive from Notehub
+
+![Datacake Configuration Device](https://user-images.githubusercontent.com/173156/174345259-662c780d-6ad6-4cc2-9d55-820d05d28c68.png)
+
+Add on the `HTTP Payload Decoder` section the digit read by the OCR reader ML model running on the device and the score.
+
+```
+    decoded.digit = data.body.label
+    decoded.score = data.body.score
+```
+
+And add it on the returning object:
+
+```
+      ,{
+            device: device,
+            field: "SCORE",
+            value: decoded.score
+        },
+        {
+            device: device,
+            field: "DIGIT",
+            value: decoded.digit
+        }                
+    ];
+```
+
+16. Copy the `HTTP Endpoint URL` from Datacake to create a **Route** on the Notehub account. 
+
+17. Select the `General HTTP/HTTPS Request/Response` and add the HTTP Endpoint URL from datacake. You can select the `data.qo` notefiles or just All. And create the route.
+
+![Create the new Route from Notehub to Datacake](https://user-images.githubusercontent.com/173156/174345876-9b00b549-e062-4035-90ab-e43eb3586594.png)
+
+18. Now Datacake should receive the data from Notehub, and you are ready to define a Dashboard.
