@@ -137,3 +137,6 @@ And add it on the returning object:
 ![Create the new Route from Notehub to Datacake](https://user-images.githubusercontent.com/173156/174345876-9b00b549-e062-4035-90ab-e43eb3586594.png)
 
 18. Now Datacake should receive the data from Notehub, and you are ready to define a Dashboard.
+
+![Create your dashboard on Datacake](https://user-images.githubusercontent.com/173156/174346238-3ed2b1be-ff2c-42d8-acb2-8caf1372d09f.png)
+
